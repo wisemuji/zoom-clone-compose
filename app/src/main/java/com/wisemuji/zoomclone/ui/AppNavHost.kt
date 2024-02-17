@@ -5,7 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.wisemuji.zoomclone.ui.joinmeeting.JoinMeetingScreen
 import com.wisemuji.zoomclone.ui.lobby.LobbyScreen
+import com.wisemuji.zoomclone.ui.meetingroom.MeetingRoomScreen
+import com.wisemuji.zoomclone.ui.newmeeting.NewMeetingScreen
 
 enum class Screen {
     LOBBY,
@@ -34,6 +37,15 @@ fun AppNavHost(
     ) {
         composable(NavigationItem.Lobby.route) {
             LobbyScreen(navController)
+        }
+        composable(NavigationItem.NewMeeting.route) {
+            NewMeetingScreen(navController)
+        }
+        composable(NavigationItem.JoinMeeting.route) {
+            JoinMeetingScreen(navController)
+        }
+        composable(NavigationItem.MeetingRoom.route) {
+            MeetingRoomScreen(navController)
         }
     }
 }

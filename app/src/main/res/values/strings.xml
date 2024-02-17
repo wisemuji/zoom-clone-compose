@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ZoomCloneCompose</string>
+
+    <string name="start_a_meeting">Start a Meeting</string>
+    <string name="cancel">Cancel</string>
+    <string name="video_on">Video on</string>
+    <string name="use_personal_meeting_id">Use personal meeting ID (PMI)</string>
+    <string name="personal_meeting_id">XXX XXX XXXX</string>
 </resources>
