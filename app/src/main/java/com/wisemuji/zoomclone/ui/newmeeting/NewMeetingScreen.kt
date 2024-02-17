@@ -95,7 +95,7 @@ private fun NewMeetingTopAppBar(onBack: () -> Unit) {
 
 @Preview
 @Composable
-fun NewMeetingScreenPreview() {
+private fun NewMeetingScreenPreview() {
     ZoomCloneComposeTheme {
         NewMeetingScreen(navController = rememberNavController())
     }

@@ -42,6 +42,6 @@ fun JoinMeetingScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun JoinMeetingScreenPreview() {
+private fun JoinMeetingScreenPreview() {
     JoinMeetingScreen(navController = rememberNavController())
 }

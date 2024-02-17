@@ -38,7 +38,7 @@ fun FullSizeButton(
 
 @Preview
 @Composable
-fun FullSizeButtonPreview() {
+private fun FullSizeButtonPreview() {
     ZoomCloneComposeTheme {
         FullSizeButton(text = "Start a Meeting", onClick = {})
     }
@@ -46,7 +46,7 @@ fun FullSizeButtonPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun FullSizeButtonPreviewDisabled() {
+private fun FullSizeButtonPreviewDisabled() {
     ZoomCloneComposeTheme {
         FullSizeButton(text = "Start a Meeting", onClick = {}, enabled = false)
     }

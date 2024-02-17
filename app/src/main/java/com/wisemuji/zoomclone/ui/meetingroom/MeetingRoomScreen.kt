@@ -21,6 +21,6 @@ fun MeetingRoomScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun MeetingRoomScreenPreview() {
+private fun MeetingRoomScreenPreview() {
     MeetingRoomScreen(navController = rememberNavController())
 }

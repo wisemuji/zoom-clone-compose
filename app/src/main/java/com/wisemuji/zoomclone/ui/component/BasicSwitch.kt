@@ -79,12 +79,12 @@ fun BasicSwitchRow(
 
 @Preview
 @Composable
-fun BasicSwitchPreview() {
+private fun BasicSwitchPreview() {
     BasicSwitch(checked = true, onCheckedChange = {})
 }
 
 @Preview
 @Composable
-fun BasicSwitchPreviewUnchecked() {
+private fun BasicSwitchPreviewUnchecked() {
     BasicSwitch(checked = false, onCheckedChange = {})
 }

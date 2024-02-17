@@ -42,6 +42,6 @@ fun LobbyScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun LobbyScreenPreview() {
+private fun LobbyScreenPreview() {
     LobbyScreen(navController = rememberNavController())
 }
