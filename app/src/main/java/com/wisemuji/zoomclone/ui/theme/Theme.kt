@@ -23,6 +23,7 @@ private val LightColorScheme = lightColorScheme(
     surface = White,
     onSurface = Black,
     surfaceContainer = Gray10,
+    surfaceVariant = White,
 )
 
 // TODO: Add dark color scheme
