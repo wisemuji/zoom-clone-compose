@@ -27,7 +27,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
@@ -108,7 +107,7 @@ private fun JoinMeetingTopAppBar(onBack: () -> Unit) {
             )
         }
         Text(
-            text = stringResource(R.string.join_a_meeting),
+            text = stringResource(R.string.join_meeting_title),
             fontSize = 17.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.align(Alignment.Center)

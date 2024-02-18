@@ -68,7 +68,7 @@ fun NewMeetingScreen(navController: NavHostController) {
             )
             DefaultHorizontalDivider()
             FullSizeButton(
-                text = stringResource(R.string.start_a_meeting),
+                text = stringResource(R.string.new_meeting_title),
                 onClick = { navController.navigateToMeetingRoom("defaultId") },
                 modifier = Modifier.padding(24.dp),
             )
@@ -89,7 +89,7 @@ private fun NewMeetingTopAppBar(onBack: () -> Unit) {
             Text(text = stringResource(R.string.cancel), fontSize = 17.sp)
         }
         Text(
-            text = stringResource(R.string.start_a_meeting),
+            text = stringResource(R.string.new_meeting_title),
             fontSize = 17.sp,
             fontWeight = Medium,
             modifier = Modifier.align(Center)
