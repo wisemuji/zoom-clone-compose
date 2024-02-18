@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
@@ -34,6 +35,7 @@ import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.DefaultTextField
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Blue
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.Gray60
@@ -68,7 +70,9 @@ fun JoinMeetingScreen(navController: NavHostController) {
             )
             FullSizeButton(
                 text = stringResource(R.string.join),
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigateToMeetingRoom(meetingId)
+                },
                 modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
             )
             Text(

@@ -11,8 +11,12 @@
     <string name="meeting_id_placeholder">Meeting ID</string>
     <string name="your_name_placeholder">Your Name</string>
     <string name="join">Join</string>
-    <string name="join_notes">If you received an invitation link, tap on the the link to join the meeting</string>
+    <string name="join_notes">If you received an invitation link, tap on the link to join the meeting</string>
     <string name="join_options">Join options</string>
     <string name="do_not_connect_audio">Don\'t Connect To Audio</string>
     <string name="turn_off_video">Turn Off My Video</string>
+
+    <string name="meeting_room_title">Zoom Clone</string>
+    <string name="connecting">Connecting…</string>
+    <string name="error">Oops! Something went wrong.</string>
 </resources>
