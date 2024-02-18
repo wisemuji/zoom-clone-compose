@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -50,36 +51,38 @@ fun LobbyScreen(navController: NavHostController) {
             LobbyScreenTopAppBar { /* TODO: not implemented yet */ }
         }
     ) { innerPadding ->
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .padding(innerPadding)
-                .background(Gray10)
-                .padding(16.dp)
-                .fillMaxWidth(),
-        ) {
-            LobbyItem(
-                icon = painterResource(id = R.drawable.ic_zoom_video_on),
-                caption = stringResource(R.string.new_meeting_navigator),
-                color = Orange
-            ) { navController.navigate(Screen.NEW_MEETING.name) }
-            LobbyItem(
-                icon = painterResource(id = R.drawable.ic_zoom_join_meeting),
-                caption = stringResource(R.string.join_meeting_navigator),
-                color = Blue
-            )
-            LobbyItem(
-                icon = painterResource(id = R.drawable.ic_zoom_breakout),
-                caption = stringResource(R.string.working_in_progress),
-                color = Gray50
-            )
-            LobbyItem(
-                icon = painterResource(id = R.drawable.ic_zoom_breakout),
-                caption = stringResource(R.string.working_in_progress),
-                color = Gray50
-            )
+        Column {
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .background(Gray10)
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+            ) {
+                LobbyItem(
+                    icon = painterResource(id = R.drawable.ic_zoom_video_on),
+                    caption = stringResource(R.string.new_meeting_navigator),
+                    color = Orange
+                ) { navController.navigate(Screen.NEW_MEETING.name) }
+                LobbyItem(
+                    icon = painterResource(id = R.drawable.ic_zoom_join_meeting),
+                    caption = stringResource(R.string.join_meeting_navigator),
+                    color = Blue
+                ) { navController.navigate(Screen.JOIN_MEETING.name) }
+                LobbyItem(
+                    icon = painterResource(id = R.drawable.ic_zoom_breakout),
+                    caption = stringResource(R.string.working_in_progress),
+                    color = Gray50
+                )
+                LobbyItem(
+                    icon = painterResource(id = R.drawable.ic_zoom_breakout),
+                    caption = stringResource(R.string.working_in_progress),
+                    color = Gray50
+                )
+            }
+            DefaultHorizontalDivider()
         }
-        DefaultHorizontalDivider()
     }
 }
 
@@ -123,13 +126,15 @@ fun LobbyItem(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.clickable { onClick() },
+        modifier = modifier,
     ) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .background(color, RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(16.dp))
+                .background(color)
                 .size(64.dp)
+                .clickable { onClick() },
         ) {
             Icon(
                 painter = icon,
