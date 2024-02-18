@@ -15,14 +15,14 @@ class ZoomCloneComposeApplication : Application() {
     }
 
     private fun initStreamVideo() {
-        val userId = "stream"
+        val userId = "wisemuji"
         StreamVideoBuilder(
             context = applicationContext,
             apiKey = BuildConfig.STREAM_API_KEY,
             token = StreamVideo.devToken(userId),
             user = User(
                 id = userId,
-                name = "stream",
+                name = "Wisemuji",
                 image = "http://placekitten.com/200/300",
                 role = "admin"
             )

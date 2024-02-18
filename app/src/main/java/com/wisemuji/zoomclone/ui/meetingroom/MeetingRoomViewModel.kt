@@ -23,7 +23,7 @@ class MeetingRoomViewModel @Inject constructor(
         MutableStateFlow<MeetingUiState>(MeetingUiState.Loading)
     val uiState: StateFlow<MeetingUiState> = _uiState
 
-    fun loadMeeting(type: String, id: String = callId) {
+    fun loadMeeting(type: String = DEFAULT_TYPE, id: String = callId) {
         viewModelScope.launch {
             val streamVideo = StreamVideo.instance()
             val call = streamVideo.call(type = type, id = id)
@@ -34,6 +34,10 @@ class MeetingRoomViewModel @Inject constructor(
                 _uiState.value = MeetingUiState.Error
             }
         }
+    }
+
+    companion object {
+        private const val DEFAULT_TYPE = "default"
     }
 }
 

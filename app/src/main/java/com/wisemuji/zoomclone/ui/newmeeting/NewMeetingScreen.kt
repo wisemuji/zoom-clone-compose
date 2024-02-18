@@ -30,6 +30,7 @@ import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
@@ -65,7 +66,7 @@ fun NewMeetingScreen(navController: NavHostController) {
             DefaultHorizontalDivider()
             FullSizeButton(
                 text = stringResource(R.string.start_a_meeting),
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigateToMeetingRoom("defaultId") },
                 modifier = Modifier.padding(24.dp),
             )
         }

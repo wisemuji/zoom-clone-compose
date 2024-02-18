@@ -54,7 +54,7 @@ fun MeetingRoomScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = Unit) {
-        viewModel.loadMeeting(type = "default")
+        viewModel.loadMeeting()
     }
     when (uiState) {
         is MeetingUiState.Success -> {
