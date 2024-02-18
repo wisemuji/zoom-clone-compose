@@ -30,8 +30,10 @@ import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Gray10
+import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
@@ -39,6 +41,7 @@ fun NewMeetingScreen(navController: NavHostController) {
     var videoOn by remember { mutableStateOf(true) }
     var usePersonalMeetingId by remember { mutableStateOf(false) }
 
+    StatusBarColor(color = White, isIconLight = true)
     Scaffold(
         topBar = { NewMeetingTopAppBar(onBack = { navController.popBackStack() }) }
     ) { innerPadding ->

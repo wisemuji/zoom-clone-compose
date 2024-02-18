@@ -34,7 +34,7 @@ private val DarkColorScheme = LightColorScheme
 
 @Composable
 fun ZoomCloneComposeTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val colorScheme = when {

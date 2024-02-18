@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wisemuji.zoomclone.R
+import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.component.ZoomVideoTheme
 import com.wisemuji.zoomclone.ui.theme.Black
 import com.wisemuji.zoomclone.ui.theme.White
@@ -53,6 +54,7 @@ fun MeetingRoomScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    StatusBarColor(color = Black, isIconLight = false)
     LaunchedEffect(key1 = Unit) {
         viewModel.loadMeeting()
     }

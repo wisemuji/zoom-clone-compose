@@ -35,10 +35,12 @@ import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.DefaultTextField
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Blue
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.Gray60
+import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
@@ -46,6 +48,7 @@ fun JoinMeetingScreen(navController: NavHostController) {
     var meetingId by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
 
+    StatusBarColor(color = White, isIconLight = true)
     Scaffold(
         topBar = { JoinMeetingTopAppBar(onBack = { navController.popBackStack() }) }
     ) { innerPadding ->

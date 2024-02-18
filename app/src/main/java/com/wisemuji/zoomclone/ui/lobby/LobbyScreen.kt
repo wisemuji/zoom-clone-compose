@@ -17,11 +17,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.ui.Screen
+import com.wisemuji.zoomclone.ui.component.StatusBarColor
+import com.wisemuji.zoomclone.ui.theme.Gray80
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LobbyScreen(navController: NavHostController) {
+    StatusBarColor(color = Gray80, isIconLight = false)
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
