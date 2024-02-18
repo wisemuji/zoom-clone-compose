@@ -2,11 +2,11 @@ plugins {
     id("zoomclone.android.application")
     id("zoomclone.android.compose")
     id("kotlinx-serialization")
+    id(libs.plugins.google.secrets.get().pluginId)
 }
 
 android {
     namespace = "com.wisemuji.zoomclone"
-
     defaultConfig {
         applicationId = "com.wisemuji.zoomclone"
         targetSdk = 34
@@ -18,11 +18,21 @@ android {
             useSupportLibrary = true
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+secrets {
+    propertiesFileName = "secrets.properties"
+    defaultPropertiesFileName = "secrets.defaults.properties"
+    ignoreList.add("keyToIgnore") // Ignore the key "keyToIgnore"
+    ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
 }
 
 dependencies {
