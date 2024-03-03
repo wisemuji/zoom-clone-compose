@@ -73,7 +73,7 @@ STREAM_API_KEY=REPLACE WITH YOUR API KEY
 8. Build and run the project.
 
 ## 🛠 Tech Stack & Open Source Libraries
-- Minimum SDK level 21.
+- Minimum SDK level 26.
 - 100% [Jetpack Compose](https://developer.android.com/jetpack/compose) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
 - [Compose Video SDK for Real-Time Meeting](https://getstream.io/video/docs/android/tutorials/video-calling?utm_source=Github&utm_medium=external_write[…]_campaign=Github_Mar2024_ZoomAndroidClone&utm_term=suhyeon): The Jetpack Compose Chat Messaging SDK is built on a low-level chat client and provides modular, customizable Compose UI components that you can easily drop into your app.
 - Jetpack
@@ -81,7 +81,6 @@ STREAM_API_KEY=REPLACE WITH YOUR API KEY
   - ViewModel: UI related data holder and lifecycle aware.
   - Navigation: For navigating screens and [Hilt Navigation Compose](https://developer.android.com/jetpack/compose/libraries#hilt) for injecting dependencies.
   - [Hilt](https://dagger.dev/hilt/): Dependency Injection.
-- [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
 
 ## 🤝 Contribution
 
