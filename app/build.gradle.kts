@@ -1,7 +1,7 @@
 plugins {
     id("zoomclone.android.application")
     id("zoomclone.android.compose")
-    id("kotlinx-serialization")
+    id(libs.plugins.kotlin.serialization.get().pluginId)
     id(libs.plugins.google.secrets.get().pluginId)
 }
 
@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModelCompose)
     implementation(libs.androidx.compose.navigation)
 
-    // retrofit
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.kotlin.serialization)
+    // kotlin
+    implementation(libs.kotlinx.serialization.json)
 }
