@@ -134,7 +134,7 @@ private fun MeetingRoomTopAppBar(
     CallAppBar(
         call = call,
         leadingContent = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = { onLeaveCall() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                     contentDescription = "Back",
@@ -150,7 +150,7 @@ private fun MeetingRoomTopAppBar(
         trailingContent = {
             LeaveCallAction(
                 modifier = Modifier.size(52.dp),
-                onCallAction = { onLeaveCall.invoke() }
+                onCallAction = { onLeaveCall() }
             )
         },
         modifier = Modifier
