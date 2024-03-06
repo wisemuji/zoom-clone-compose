@@ -81,6 +81,7 @@ STREAM_API_KEY=REPLACE WITH YOUR API KEY
   - ViewModel: UI related data holder and lifecycle aware.
   - Navigation: For navigating screens and [Hilt Navigation Compose](https://developer.android.com/jetpack/compose/libraries#hilt) for injecting dependencies.
   - [Hilt](https://dagger.dev/hilt/): Dependency Injection.
+- [Spotless gradle plugin](https://github.com/diffplug/spotless/tree/main/plugin-gradle) for formatting kotlin files.
 
 ## 🤝 Contribution
 
