@@ -24,4 +24,8 @@
     <string name="meeting_room_title">Zoom Clone</string>
     <string name="connecting">Connecting…</string>
     <string name="error">Oops! Something went wrong.</string>
+
+    <string name="app_information_title">About</string>
+    <string name="app_information_content">This is a Zoom clone app built with Stream Video SDK for Compose to implement real-time video meeting features using Jetpack Compose.</string>
+    <string name="dialog_confirm">OK</string>
 </resources>

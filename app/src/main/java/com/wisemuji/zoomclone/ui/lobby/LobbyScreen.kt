@@ -13,11 +13,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,11 +51,14 @@ fun LobbyScreen(
     onNewMeetingClick: () -> Unit,
     onJoinMeetingClick: () -> Unit,
 ) {
+    var showInfoDialog by remember { mutableStateOf(false) }
+
+    if (showInfoDialog) {
+        LobbyInfoDialog(onDismissRequest = { showInfoDialog = false })
+    }
     StatusBarColor(color = Gray80, isIconLight = false)
     Scaffold(
-        topBar = {
-            LobbyScreenTopAppBar { /* TODO: not implemented yet */ }
-        }
+        topBar = { LobbyScreenTopAppBar { showInfoDialog = true } }
     ) { innerPadding ->
         Column {
             Row(
@@ -116,7 +125,7 @@ private fun LobbyScreenTopAppBar(
 }
 
 @Composable
-fun LobbyItem(
+private fun LobbyItem(
     icon: Painter,
     caption: String,
     color: Color,
@@ -136,11 +145,7 @@ fun LobbyItem(
                 .size(64.dp)
                 .clickable { onClick() },
         ) {
-            Icon(
-                painter = icon,
-                contentDescription = caption,
-                tint = White
-            )
+            Icon(painter = icon, contentDescription = caption, tint = White)
         }
         Text(
             text = caption,
@@ -149,6 +154,28 @@ fun LobbyItem(
             letterSpacing = (-0.45).sp,
         )
     }
+}
+
+@Composable
+private fun LobbyInfoDialog(
+    onDismissRequest: () -> Unit,
+) {
+    AlertDialog(
+        title = {
+            Text(text = stringResource(id = R.string.app_information_title))
+        },
+        text = {
+            Text(text = stringResource(id = R.string.app_information_content))
+        },
+        onDismissRequest = {
+            onDismissRequest()
+        },
+        confirmButton = {
+            TextButton(onClick = { onDismissRequest() }) {
+                Text(text = stringResource(id = R.string.dialog_confirm))
+            }
+        }
+    )
 }
 
 @Preview
