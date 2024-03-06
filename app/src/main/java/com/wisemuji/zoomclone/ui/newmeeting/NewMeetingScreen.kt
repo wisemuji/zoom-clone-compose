@@ -9,9 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,7 +27,6 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
@@ -40,11 +42,19 @@ fun NewMeetingScreen(
     onBackPressed: () -> Unit,
     onJoinMeetingClick: (MeetingOptions) -> Unit,
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    var showNotImplementedSnackbar by remember { mutableStateOf(false) }
     var videoOn by remember { mutableStateOf(true) }
-    var usePersonalMeetingId by remember { mutableStateOf(false) }
 
+    if (showNotImplementedSnackbar) {
+        LaunchedEffect(snackbarHostState) {
+            snackbarHostState.showSnackbar("Not implemented yet. Do you want to contribute? :)")
+            showNotImplementedSnackbar = false
+        }
+    }
     StatusBarColor(color = White, isIconLight = true)
     Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = { NewMeetingTopAppBar(onBack = onBackPressed) }
     ) { innerPadding ->
         Column(
@@ -65,8 +75,8 @@ fun NewMeetingScreen(
             BasicSwitchRow(
                 title = stringResource(R.string.use_personal_meeting_id),
                 subtitle = stringResource(R.string.personal_meeting_id),
-                checked = usePersonalMeetingId,
-                onCheckedChange = { usePersonalMeetingId = it }
+                checked = false,
+                onCheckedChange = { showNotImplementedSnackbar = true }
             )
             DefaultHorizontalDivider()
             FullSizeButton(
