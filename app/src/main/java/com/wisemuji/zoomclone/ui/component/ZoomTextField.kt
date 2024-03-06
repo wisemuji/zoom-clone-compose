@@ -11,6 +11,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.wisemuji.zoomclone.ui.theme.Gray20
 import com.wisemuji.zoomclone.ui.theme.Gray50
+import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
 fun ZoomTextField(
@@ -43,9 +44,11 @@ fun ZoomTextField(
 @Preview
 @Composable
 fun ZoomTextFieldPreview() {
-    ZoomTextField(
-        value = "",
-        onValueChange = {},
-        placeholderText = "Meeting ID",
-    )
+    ZoomCloneComposeTheme {
+        ZoomTextField(
+            value = "",
+            onValueChange = {},
+            placeholderText = "Meeting ID",
+        )
+    }
 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -29,12 +30,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
-import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
-import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
-import com.wisemuji.zoomclone.ui.theme.Gray10
-import com.wisemuji.zoomclone.ui.theme.White
+import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
+import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
@@ -52,7 +51,7 @@ fun NewMeetingScreen(
             showNotImplementedSnackbar = false
         }
     }
-    StatusBarColor(color = White, isIconLight = true)
+    StatusBarColor(color = MaterialTheme.colorScheme.surface, isIconLight = true)
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = { NewMeetingTopAppBar(onBack = onBackPressed) }
@@ -61,7 +60,7 @@ fun NewMeetingScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .background(Gray10)
+                .background(MaterialTheme.colorScheme.surfaceContainer)
         ) {
             DefaultHorizontalDivider()
             Spacer(modifier = Modifier.padding(12.dp))

@@ -20,7 +20,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import io.getstream.video.android.compose.theme.VideoTheme
+import com.wisemuji.zoomclone.ui.component.ZoomVideoTheme
+import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 import io.getstream.video.android.core.Call
 import io.getstream.video.android.core.mapper.ReactionMapper
 import io.getstream.video.android.mock.StreamPreviewDataUtils
@@ -58,7 +59,7 @@ internal fun ReactionsMenu(
     Dialog(onDismiss) {
         Card(
             colors = CardDefaults.cardColors().copy(
-                containerColor = MaterialTheme.colorScheme.inverseSurface,
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHighest,
                 contentColor = MaterialTheme.colorScheme.inverseOnSurface,
             ),
             modifier = modifier.wrapContentWidth(),
@@ -127,12 +128,14 @@ private fun sendReaction(scope: CoroutineScope, call: Call, emoji: String, onDis
 @Preview
 @Composable
 private fun ReactionMenuPreview() {
-    VideoTheme {
-        StreamPreviewDataUtils.initializeStreamVideo(LocalContext.current)
-        ReactionsMenu(
-            call = previewCall,
-            reactionMapper = ReactionMapper.defaultReactionMapper(),
-            onDismiss = { }
-        )
+    ZoomCloneComposeTheme {
+        ZoomVideoTheme {
+            StreamPreviewDataUtils.initializeStreamVideo(LocalContext.current)
+            ReactionsMenu(
+                call = previewCall,
+                reactionMapper = ReactionMapper.defaultReactionMapper(),
+                onDismiss = { }
+            )
+        }
     }
 }

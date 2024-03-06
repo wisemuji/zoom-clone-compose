@@ -16,6 +16,7 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -38,12 +39,7 @@ import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
-import com.wisemuji.zoomclone.ui.theme.Blue
-import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.Gray50
-import com.wisemuji.zoomclone.ui.theme.Gray80
-import com.wisemuji.zoomclone.ui.theme.Orange
-import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
@@ -56,7 +52,7 @@ fun LobbyScreen(
     if (showInfoDialog) {
         LobbyInfoDialog(onDismissRequest = { showInfoDialog = false })
     }
-    StatusBarColor(color = Gray80, isIconLight = false)
+    StatusBarColor(color = MaterialTheme.colorScheme.surfaceContainerHighest, isIconLight = false)
     Scaffold(
         topBar = { LobbyScreenTopAppBar { showInfoDialog = true } }
     ) { innerPadding ->
@@ -65,19 +61,19 @@ fun LobbyScreen(
                 horizontalArrangement = Arrangement.SpaceAround,
                 modifier = Modifier
                     .padding(innerPadding)
-                    .background(Gray10)
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
                     .padding(16.dp)
                     .fillMaxWidth(),
             ) {
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_video_on),
                     caption = stringResource(R.string.new_meeting_navigator),
-                    color = Orange
+                    color = MaterialTheme.colorScheme.secondary,
                 ) { onNewMeetingClick() }
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_join_meeting),
                     caption = stringResource(R.string.join_meeting_navigator),
-                    color = Blue
+                    color = MaterialTheme.colorScheme.primary,
                 ) { onJoinMeetingClick() }
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_breakout),
@@ -102,7 +98,7 @@ private fun LobbyScreenTopAppBar(
     Box(
         contentAlignment = Alignment.CenterEnd,
         modifier = Modifier
-            .background(Gray80)
+            .background(MaterialTheme.colorScheme.surfaceContainerHighest)
             .fillMaxWidth()
             .height(56.dp)
             .padding(horizontal = 4.dp)
@@ -112,13 +108,13 @@ private fun LobbyScreenTopAppBar(
             fontSize = 17.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.align(Alignment.Center),
-            color = White
+            color = MaterialTheme.colorScheme.inverseOnSurface
         )
         IconButton(onClick = onInfoClick) {
             Icon(
                 imageVector = Icons.Outlined.Info,
                 contentDescription = "information",
-                tint = White
+                tint = MaterialTheme.colorScheme.inverseOnSurface
             )
         }
     }
@@ -145,12 +141,16 @@ private fun LobbyItem(
                 .size(64.dp)
                 .clickable { onClick() },
         ) {
-            Icon(painter = icon, contentDescription = caption, tint = White)
+            Icon(
+                painter = icon,
+                contentDescription = caption,
+                tint = MaterialTheme.colorScheme.onPrimary
+            )
         }
         Text(
             text = caption,
             fontSize = 12.sp,
-            color = Gray80,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             letterSpacing = (-0.45).sp,
         )
     }
@@ -201,7 +201,7 @@ private fun LobbyItemPreview() {
         LobbyItem(
             icon = painterResource(id = R.drawable.ic_zoom_video_on),
             caption = "New Meeting",
-            color = Orange
+            color = MaterialTheme.colorScheme.secondary,
         ) {}
     }
 }

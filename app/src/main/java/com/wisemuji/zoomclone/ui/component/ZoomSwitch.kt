@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -16,11 +17,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.wisemuji.zoomclone.ui.theme.Black
-import com.wisemuji.zoomclone.ui.theme.Gray30
 import com.wisemuji.zoomclone.ui.theme.Gray60
-import com.wisemuji.zoomclone.ui.theme.Green
-import com.wisemuji.zoomclone.ui.theme.White
+import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
 fun ZoomSwitch(
@@ -32,11 +30,10 @@ fun ZoomSwitch(
         checked = checked,
         onCheckedChange = onCheckedChange,
         colors = SwitchDefaults.colors(
-            checkedThumbColor = White,
-            checkedTrackColor = Green,
-            uncheckedThumbColor = Gray30,
-            uncheckedTrackColor = White,
-            uncheckedBorderColor = Gray30,
+            checkedThumbColor = MaterialTheme.colorScheme.onTertiary,
+            checkedTrackColor = MaterialTheme.colorScheme.tertiary,
+            uncheckedThumbColor = MaterialTheme.colorScheme.outlineVariant,
+            uncheckedBorderColor = MaterialTheme.colorScheme.outlineVariant,
         ),
         modifier = modifier,
     )
@@ -54,7 +51,7 @@ fun ZoomSwitchRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .clickable { onCheckedChange(!checked) }
-            .background(White)
+            .background(MaterialTheme.colorScheme.surface)
             .padding(horizontal = 14.dp)
     ) {
         Column(
@@ -65,7 +62,7 @@ fun ZoomSwitchRow(
             Text(
                 text = title,
                 fontSize = 15.sp,
-                color = Black,
+                color = MaterialTheme.colorScheme.onSurface,
             )
             subtitle?.let {
                 Text(
@@ -88,7 +85,9 @@ class CheckedPreviewParameterProvider : PreviewParameterProvider<Boolean> {
 private fun ZoomSwitchPreview(
     @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
 ) {
-    ZoomSwitch(checked = checked, onCheckedChange = {})
+    ZoomCloneComposeTheme {
+        ZoomSwitch(checked = checked, onCheckedChange = {})
+    }
 }
 
 @Preview
@@ -96,9 +95,11 @@ private fun ZoomSwitchPreview(
 private fun ZoomSwitchRowPreview(
     @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
 ) {
-    ZoomSwitchRow(
-        title = "Video On",
-        checked = checked,
-        onCheckedChange = {},
-    )
+    ZoomCloneComposeTheme {
+        ZoomSwitchRow(
+            title = "Video On",
+            checked = checked,
+            onCheckedChange = {},
+        )
+    }
 }

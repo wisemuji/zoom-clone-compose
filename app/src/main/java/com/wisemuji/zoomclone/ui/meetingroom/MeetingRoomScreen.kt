@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,8 +32,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.component.ZoomVideoTheme
-import com.wisemuji.zoomclone.ui.theme.Black
-import com.wisemuji.zoomclone.ui.theme.White
 import io.getstream.video.android.compose.ui.components.call.CallAppBar
 import io.getstream.video.android.compose.ui.components.call.controls.ControlActions
 import io.getstream.video.android.compose.ui.components.call.controls.actions.DefaultOnCallActionHandler
@@ -54,7 +53,7 @@ fun MeetingRoomScreen(
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    StatusBarColor(color = Black, isIconLight = false)
+    StatusBarColor(color = MaterialTheme.colorScheme.inverseSurface, isIconLight = false)
     LaunchedEffect(key1 = Unit) {
         viewModel.loadMeeting()
     }
@@ -138,7 +137,7 @@ private fun MeetingRoomTopAppBar(
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                     contentDescription = "Back",
-                    tint = White,
+                    tint = MaterialTheme.colorScheme.inverseOnSurface,
                     modifier = Modifier.size(52.dp),
                 )
             }
@@ -154,7 +153,7 @@ private fun MeetingRoomTopAppBar(
             )
         },
         modifier = Modifier
-            .background(Black)
+            .background(MaterialTheme.colorScheme.inverseSurface)
     )
 }
 
@@ -189,12 +188,12 @@ private fun MeetingRoomPlaceholder(
     text: String,
 ) {
     Scaffold(
-        containerColor = Black
+        containerColor = MaterialTheme.colorScheme.inverseSurface,
     ) { innerPadding ->
         Text(
             text = text,
             textAlign = TextAlign.Center,
-            color = White,
+            color = MaterialTheme.colorScheme.inverseOnSurface,
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(16.dp)

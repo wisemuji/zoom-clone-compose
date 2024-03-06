@@ -1,7 +1,6 @@
 package com.wisemuji.zoomclone.ui.theme
 
 import android.app.Activity
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -22,11 +21,13 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Black,
     surface = White,
     onSurface = Black,
+    onSurfaceVariant = Gray80,
     surfaceContainer = Gray10,
     surfaceVariant = White,
     surfaceContainerHighest = Gray80,
-    inverseSurface = Gray80,
+    inverseSurface = Black,
     inverseOnSurface = White,
+    outlineVariant = Gray30,
 )
 
 // TODO: Add dark color scheme

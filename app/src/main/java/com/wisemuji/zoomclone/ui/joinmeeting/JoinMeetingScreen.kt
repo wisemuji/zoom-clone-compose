@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,15 +30,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
-import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
-import com.wisemuji.zoomclone.ui.component.ZoomTextField
-import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
-import com.wisemuji.zoomclone.ui.theme.Blue
-import com.wisemuji.zoomclone.ui.theme.Gray10
+import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
+import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
+import com.wisemuji.zoomclone.ui.component.ZoomTextField
 import com.wisemuji.zoomclone.ui.theme.Gray60
-import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
@@ -50,7 +48,7 @@ fun JoinMeetingScreen(
     var audioOn by remember { mutableStateOf(true) }
     var videoOn by remember { mutableStateOf(true) }
 
-    StatusBarColor(color = White, isIconLight = true)
+    StatusBarColor(color = MaterialTheme.colorScheme.surface, isIconLight = true)
     Scaffold(
         topBar = { JoinMeetingTopAppBar(onBack = onBackPressed) }
     ) { innerPadding ->
@@ -58,7 +56,7 @@ fun JoinMeetingScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .background(Gray10)
+                .background(MaterialTheme.colorScheme.surfaceContainer)
         ) {
             DefaultHorizontalDivider()
             Spacer(modifier = Modifier.padding(12.dp))
@@ -108,7 +106,7 @@ private fun JoinMeetingTopAppBar(onBack: () -> Unit) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                 contentDescription = "Back",
-                tint = Blue,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(52.dp),
             )
         }

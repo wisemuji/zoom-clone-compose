@@ -3,13 +3,12 @@ package com.wisemuji.zoomclone.ui.meetingroom
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wisemuji.zoomclone.R
-import com.wisemuji.zoomclone.ui.theme.Black
 import io.getstream.video.android.core.Call
 
 @Composable
@@ -53,19 +52,17 @@ private fun ToggleButton(
     FilledIconButton(
         onClick = onClick,
         colors = IconButtonDefaults.filledIconButtonColors(
-            containerColor = Black,
+            containerColor = MaterialTheme.colorScheme.inverseSurface,
         ),
     ) {
         if (enabled) {
             Icon(
                 painterResource(enabledIcon),
-                tint = Color.White,
                 contentDescription = "enable toggle"
             )
         } else {
             Icon(
                 painterResource(disabledIcon),
-                tint = Color.White,
                 contentDescription = "disable toggle"
             )
         }

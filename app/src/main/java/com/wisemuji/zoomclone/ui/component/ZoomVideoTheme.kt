@@ -1,9 +1,8 @@
 package com.wisemuji.zoomclone.ui.component
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.RectangleShape
-import com.wisemuji.zoomclone.ui.theme.Black
-import com.wisemuji.zoomclone.ui.theme.White
 import io.getstream.video.android.compose.theme.StreamColors
 import io.getstream.video.android.compose.theme.StreamShapes
 import io.getstream.video.android.compose.theme.VideoTheme
@@ -16,10 +15,10 @@ fun ZoomVideoTheme(
         colors = StreamColors
             .defaultColors()
             .copy(
-                appBackground = Black,
-                barsBackground = Black,
-                inputBackground = Black,
-                textHighEmphasis = White,
+                appBackground = MaterialTheme.colorScheme.inverseSurface,
+                barsBackground = MaterialTheme.colorScheme.inverseSurface,
+                inputBackground = MaterialTheme.colorScheme.inverseSurface,
+                textHighEmphasis = MaterialTheme.colorScheme.inverseOnSurface,
             ),
         shapes = StreamShapes
             .defaultShapes()
