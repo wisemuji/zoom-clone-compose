@@ -1,3 +1,19 @@
+/*
+ * Copyright 2024 Suhyeon(wisemuji) and Stream.IO, Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.wisemuji.zoomclone.ui.lobby
 
 import androidx.compose.foundation.background
@@ -54,7 +70,7 @@ fun LobbyScreen(
     }
     StatusBarColor(color = MaterialTheme.colorScheme.surfaceContainerHighest, isIconLight = false)
     Scaffold(
-        topBar = { LobbyScreenTopAppBar { showInfoDialog = true } }
+        topBar = { LobbyScreenTopAppBar { showInfoDialog = true } },
     ) { innerPadding ->
         Column {
             Row(
@@ -78,12 +94,12 @@ fun LobbyScreen(
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_breakout),
                     caption = stringResource(R.string.working_in_progress),
-                    color = Gray50
+                    color = Gray50,
                 )
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_breakout),
                     caption = stringResource(R.string.working_in_progress),
-                    color = Gray50
+                    color = Gray50,
                 )
             }
             DefaultHorizontalDivider()
@@ -101,20 +117,20 @@ private fun LobbyScreenTopAppBar(
             .background(MaterialTheme.colorScheme.surfaceContainerHighest)
             .fillMaxWidth()
             .height(56.dp)
-            .padding(horizontal = 4.dp)
+            .padding(horizontal = 4.dp),
     ) {
         Text(
             text = stringResource(R.string.lobby_title),
             fontSize = 17.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.align(Alignment.Center),
-            color = MaterialTheme.colorScheme.inverseOnSurface
+            color = MaterialTheme.colorScheme.inverseOnSurface,
         )
         IconButton(onClick = onInfoClick) {
             Icon(
                 imageVector = Icons.Outlined.Info,
                 contentDescription = "information",
-                tint = MaterialTheme.colorScheme.inverseOnSurface
+                tint = MaterialTheme.colorScheme.inverseOnSurface,
             )
         }
     }
@@ -144,7 +160,7 @@ private fun LobbyItem(
             Icon(
                 painter = icon,
                 contentDescription = caption,
-                tint = MaterialTheme.colorScheme.onPrimary
+                tint = MaterialTheme.colorScheme.onPrimary,
             )
         }
         Text(
@@ -174,7 +190,7 @@ private fun LobbyInfoDialog(
             TextButton(onClick = { onDismissRequest() }) {
                 Text(text = stringResource(id = R.string.dialog_confirm))
             }
-        }
+        },
     )
 }
 
@@ -190,7 +206,7 @@ private fun LobbyScreenPreview() {
 @Composable
 private fun LobbyScreenTopAppBarPreview() {
     ZoomCloneComposeTheme {
-        LobbyScreenTopAppBar() {}
+        LobbyScreenTopAppBar {}
     }
 }
 

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2024 Suhyeon(wisemuji) and Stream.IO, Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.wisemuji.zoomclone.ui.joinmeeting
 
 import androidx.compose.foundation.background
@@ -50,13 +66,13 @@ fun JoinMeetingScreen(
 
     StatusBarColor(color = MaterialTheme.colorScheme.surface, isIconLight = true)
     Scaffold(
-        topBar = { JoinMeetingTopAppBar(onBack = onBackPressed) }
+        topBar = { JoinMeetingTopAppBar(onBack = onBackPressed) },
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.surfaceContainer)
+                .background(MaterialTheme.colorScheme.surfaceContainer),
         ) {
             DefaultHorizontalDivider()
             Spacer(modifier = Modifier.padding(12.dp))
@@ -81,13 +97,13 @@ fun JoinMeetingScreen(
                 fontSize = 12.sp,
                 color = Gray60,
                 lineHeight = 14.sp,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 42.dp)
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 42.dp),
             )
             JoinOptions(
                 doNotConnectAudio = !audioOn,
                 onCheckedDoNotConnectAudio = { audioOn = !it },
                 turnOffVideo = !videoOn,
-                onCheckedTurnOffVideo = { videoOn = !it }
+                onCheckedTurnOffVideo = { videoOn = !it },
             )
         }
     }
@@ -100,7 +116,7 @@ private fun JoinMeetingTopAppBar(onBack: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .padding(horizontal = 4.dp)
+            .padding(horizontal = 4.dp),
     ) {
         IconButton(onClick = onBack) {
             Icon(
@@ -114,7 +130,7 @@ private fun JoinMeetingTopAppBar(onBack: () -> Unit) {
             text = stringResource(R.string.join_meeting_title),
             fontSize = 17.sp,
             fontWeight = FontWeight.Medium,
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.Center),
         )
     }
 }
@@ -132,19 +148,19 @@ private fun JoinOptions(
             fontSize = 12.sp,
             color = Gray60,
             fontWeight = FontWeight.Medium,
-            modifier = Modifier.padding(start = 16.dp)
+            modifier = Modifier.padding(start = 16.dp),
         )
         DefaultHorizontalDivider()
         ZoomSwitchRow(
             title = stringResource(R.string.do_not_connect_audio),
             checked = doNotConnectAudio,
-            onCheckedChange = onCheckedDoNotConnectAudio
+            onCheckedChange = onCheckedDoNotConnectAudio,
         )
         DefaultHorizontalDivider()
         ZoomSwitchRow(
             title = stringResource(R.string.turn_off_video),
             checked = turnOffVideo,
-            onCheckedChange = onCheckedTurnOffVideo
+            onCheckedChange = onCheckedTurnOffVideo,
         )
         DefaultHorizontalDivider()
     }
