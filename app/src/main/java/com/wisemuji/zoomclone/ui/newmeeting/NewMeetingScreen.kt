@@ -24,7 +24,6 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
@@ -32,19 +31,21 @@ import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
-import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
-fun NewMeetingScreen(navController: NavHostController) {
+fun NewMeetingScreen(
+    onBackPressed: () -> Unit,
+    onJoinMeetingClick: (MeetingOptions) -> Unit,
+) {
     var videoOn by remember { mutableStateOf(true) }
     var usePersonalMeetingId by remember { mutableStateOf(false) }
 
     StatusBarColor(color = White, isIconLight = true)
     Scaffold(
-        topBar = { NewMeetingTopAppBar(onBack = { navController.popBackStack() }) }
+        topBar = { NewMeetingTopAppBar(onBack = onBackPressed) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -70,9 +71,7 @@ fun NewMeetingScreen(navController: NavHostController) {
             DefaultHorizontalDivider()
             FullSizeButton(
                 text = stringResource(R.string.new_meeting_title),
-                onClick = {
-                    navController.navigateToMeetingRoom(MeetingOptions(videoOn = videoOn))
-                },
+                onClick = { onJoinMeetingClick(MeetingOptions(videoOn = videoOn)) },
                 modifier = Modifier.padding(24.dp),
             )
         }
@@ -104,6 +103,6 @@ private fun NewMeetingTopAppBar(onBack: () -> Unit) {
 @Composable
 private fun NewMeetingScreenPreview() {
     ZoomCloneComposeTheme {
-        NewMeetingScreen(navController = rememberNavController())
+        NewMeetingScreen({}, {})
     }
 }

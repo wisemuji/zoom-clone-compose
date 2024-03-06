@@ -4,44 +4,38 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import com.wisemuji.zoomclone.ui.joinmeeting.JoinMeetingScreen
-import com.wisemuji.zoomclone.ui.lobby.LobbyScreen
+import com.wisemuji.zoomclone.ui.joinmeeting.navigation.joinMeetingScreen
+import com.wisemuji.zoomclone.ui.joinmeeting.navigation.navigateToJoinMeeting
+import com.wisemuji.zoomclone.ui.lobby.navigation.LobbyRoute
+import com.wisemuji.zoomclone.ui.lobby.navigation.lobbyScreen
 import com.wisemuji.zoomclone.ui.meetingroom.navigation.meetingRoomScreen
-import com.wisemuji.zoomclone.ui.newmeeting.NewMeetingScreen
-
-enum class Screen {
-    LOBBY,
-    NEW_MEETING,
-    JOIN_MEETING,
-}
-
-sealed class NavigationItem(val route: String) {
-    data object Lobby : NavigationItem(Screen.LOBBY.name)
-    data object NewMeeting : NavigationItem(Screen.NEW_MEETING.name)
-    data object JoinMeeting : NavigationItem(Screen.JOIN_MEETING.name)
-}
+import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
+import com.wisemuji.zoomclone.ui.newmeeting.navigation.navigateToNewMeeting
+import com.wisemuji.zoomclone.ui.newmeeting.navigation.newMeetingScreen
 
 @Composable
 fun AppNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = NavigationItem.Lobby.route,
+    startDestination: String = LobbyRoute.ROUTE,
 ) {
     NavHost(
         modifier = modifier,
         navController = navController,
         startDestination = startDestination
     ) {
-        composable(NavigationItem.Lobby.route) {
-            LobbyScreen(navController)
-        }
-        composable(NavigationItem.NewMeeting.route) {
-            NewMeetingScreen(navController)
-        }
-        composable(NavigationItem.JoinMeeting.route) {
-            JoinMeetingScreen(navController)
-        }
-        meetingRoomScreen(onBackPressed = { navController.popBackStack() })
+        lobbyScreen(
+            onNewMeetingClick = navController::navigateToNewMeeting,
+            onJoinMeetingClick = navController::navigateToJoinMeeting,
+        )
+        newMeetingScreen(
+            onBackPressed = navController::popBackStack,
+            onJoinMeetingClick = navController::navigateToMeetingRoom
+        )
+        joinMeetingScreen(
+            onBackPressed = navController::popBackStack,
+            onJoinMeetingClick = navController::navigateToMeetingRoom
+        )
+        meetingRoomScreen(onBackPressed = navController::popBackStack)
     }
 }

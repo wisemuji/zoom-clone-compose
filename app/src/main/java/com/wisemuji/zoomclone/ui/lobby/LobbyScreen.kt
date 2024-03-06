@@ -29,10 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
-import com.wisemuji.zoomclone.ui.Screen
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.theme.Blue
@@ -44,7 +41,10 @@ import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
-fun LobbyScreen(navController: NavHostController) {
+fun LobbyScreen(
+    onNewMeetingClick: () -> Unit,
+    onJoinMeetingClick: () -> Unit,
+) {
     StatusBarColor(color = Gray80, isIconLight = false)
     Scaffold(
         topBar = {
@@ -64,12 +64,12 @@ fun LobbyScreen(navController: NavHostController) {
                     icon = painterResource(id = R.drawable.ic_zoom_video_on),
                     caption = stringResource(R.string.new_meeting_navigator),
                     color = Orange
-                ) { navController.navigate(Screen.NEW_MEETING.name) }
+                ) { onNewMeetingClick() }
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_join_meeting),
                     caption = stringResource(R.string.join_meeting_navigator),
                     color = Blue
-                ) { navController.navigate(Screen.JOIN_MEETING.name) }
+                ) { onJoinMeetingClick() }
                 LobbyItem(
                     icon = painterResource(id = R.drawable.ic_zoom_breakout),
                     caption = stringResource(R.string.working_in_progress),
@@ -155,7 +155,7 @@ fun LobbyItem(
 @Composable
 private fun LobbyScreenPreview() {
     ZoomCloneComposeTheme {
-        LobbyScreen(navController = rememberNavController())
+        LobbyScreen({}, {})
     }
 }
 
@@ -175,6 +175,6 @@ private fun LobbyItemPreview() {
             icon = painterResource(id = R.drawable.ic_zoom_video_on),
             caption = "New Meeting",
             color = Orange
-        ) { }
+        ) {}
     }
 }

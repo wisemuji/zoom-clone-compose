@@ -27,8 +27,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
@@ -36,7 +34,6 @@ import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.DefaultTextField
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
-import com.wisemuji.zoomclone.ui.meetingroom.navigation.navigateToMeetingRoom
 import com.wisemuji.zoomclone.ui.theme.Blue
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.Gray60
@@ -44,7 +41,10 @@ import com.wisemuji.zoomclone.ui.theme.White
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
-fun JoinMeetingScreen(navController: NavHostController) {
+fun JoinMeetingScreen(
+    onBackPressed: () -> Unit,
+    onJoinMeetingClick: (MeetingOptions) -> Unit,
+) {
     var meetingId by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
     var audioOn by remember { mutableStateOf(true) }
@@ -52,7 +52,7 @@ fun JoinMeetingScreen(navController: NavHostController) {
 
     StatusBarColor(color = White, isIconLight = true)
     Scaffold(
-        topBar = { JoinMeetingTopAppBar(onBack = { navController.popBackStack() }) }
+        topBar = { JoinMeetingTopAppBar(onBack = onBackPressed) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -75,11 +75,7 @@ fun JoinMeetingScreen(navController: NavHostController) {
             )
             FullSizeButton(
                 text = stringResource(R.string.join),
-                onClick = {
-                    navController.navigateToMeetingRoom(
-                        MeetingOptions(meetingId, name, audioOn, videoOn)
-                    )
-                },
+                onClick = { onJoinMeetingClick(MeetingOptions(meetingId, name, audioOn, videoOn)) },
                 modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
             )
             Text(
@@ -160,6 +156,6 @@ private fun JoinOptions(
 @Composable
 private fun JoinMeetingScreenPreview() {
     ZoomCloneComposeTheme {
-        JoinMeetingScreen(navController = rememberNavController())
+        JoinMeetingScreen({}, {})
     }
 }
