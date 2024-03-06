@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
-import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
+import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
-import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.theme.Gray10
 import com.wisemuji.zoomclone.ui.theme.White
@@ -66,20 +66,20 @@ fun NewMeetingScreen(
             DefaultHorizontalDivider()
             Spacer(modifier = Modifier.padding(12.dp))
             DefaultHorizontalDivider()
-            BasicSwitchRow(
+            ZoomSwitchRow(
                 title = stringResource(R.string.video_on),
                 checked = videoOn,
                 onCheckedChange = { videoOn = it }
             )
             DefaultHorizontalDivider()
-            BasicSwitchRow(
+            ZoomSwitchRow(
                 title = stringResource(R.string.use_personal_meeting_id),
                 subtitle = stringResource(R.string.personal_meeting_id),
                 checked = false,
                 onCheckedChange = { showNotImplementedSnackbar = true }
             )
             DefaultHorizontalDivider()
-            FullSizeButton(
+            ZoomFullSizeButton(
                 text = stringResource(R.string.new_meeting_title),
                 onClick = { onJoinMeetingClick(MeetingOptions(videoOn = videoOn)) },
                 modifier = Modifier.padding(24.dp),

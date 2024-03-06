@@ -29,10 +29,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.model.MeetingOptions
-import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
+import com.wisemuji.zoomclone.ui.component.ZoomSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
-import com.wisemuji.zoomclone.ui.component.DefaultTextField
-import com.wisemuji.zoomclone.ui.component.FullSizeButton
+import com.wisemuji.zoomclone.ui.component.ZoomTextField
+import com.wisemuji.zoomclone.ui.component.ZoomFullSizeButton
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.theme.Blue
 import com.wisemuji.zoomclone.ui.theme.Gray10
@@ -63,17 +63,17 @@ fun JoinMeetingScreen(
             DefaultHorizontalDivider()
             Spacer(modifier = Modifier.padding(12.dp))
             DefaultHorizontalDivider()
-            DefaultTextField(
+            ZoomTextField(
                 value = meetingId,
                 onValueChange = { meetingId = it },
                 placeholderText = stringResource(R.string.meeting_id_placeholder),
             )
-            DefaultTextField(
+            ZoomTextField(
                 value = name,
                 onValueChange = { name = it },
                 placeholderText = stringResource(R.string.your_name_placeholder),
             )
-            FullSizeButton(
+            ZoomFullSizeButton(
                 text = stringResource(R.string.join),
                 onClick = { onJoinMeetingClick(MeetingOptions(meetingId, name, audioOn, videoOn)) },
                 modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
@@ -137,13 +137,13 @@ private fun JoinOptions(
             modifier = Modifier.padding(start = 16.dp)
         )
         DefaultHorizontalDivider()
-        BasicSwitchRow(
+        ZoomSwitchRow(
             title = stringResource(R.string.do_not_connect_audio),
             checked = doNotConnectAudio,
             onCheckedChange = onCheckedDoNotConnectAudio
         )
         DefaultHorizontalDivider()
-        BasicSwitchRow(
+        ZoomSwitchRow(
             title = stringResource(R.string.turn_off_video),
             checked = turnOffVideo,
             onCheckedChange = onCheckedTurnOffVideo

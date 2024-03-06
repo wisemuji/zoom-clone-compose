@@ -23,7 +23,7 @@ import com.wisemuji.zoomclone.ui.theme.Green
 import com.wisemuji.zoomclone.ui.theme.White
 
 @Composable
-fun BasicSwitch(
+fun ZoomSwitch(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
@@ -43,7 +43,7 @@ fun BasicSwitch(
 }
 
 @Composable
-fun BasicSwitchRow(
+fun ZoomSwitchRow(
     title: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
@@ -75,7 +75,7 @@ fun BasicSwitchRow(
                 )
             }
         }
-        BasicSwitch(checked, onCheckedChange = onCheckedChange)
+        ZoomSwitch(checked, onCheckedChange = onCheckedChange)
     }
 }
 
@@ -85,18 +85,18 @@ class CheckedPreviewParameterProvider : PreviewParameterProvider<Boolean> {
 
 @Preview
 @Composable
-private fun BasicSwitchPreview(
+private fun ZoomSwitchPreview(
     @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
 ) {
-    BasicSwitch(checked = checked, onCheckedChange = {})
+    ZoomSwitch(checked = checked, onCheckedChange = {})
 }
 
 @Preview
 @Composable
-private fun BasicSwitchRowPreview(
+private fun ZoomSwitchRowPreview(
     @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
 ) {
-    BasicSwitchRow(
+    ZoomSwitchRow(
         title = "Video On",
         checked = checked,
         onCheckedChange = {},

@@ -8,11 +8,12 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import com.wisemuji.zoomclone.ui.theme.Gray20
 import com.wisemuji.zoomclone.ui.theme.Gray50
 
 @Composable
-fun DefaultTextField(
+fun ZoomTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholderText: String,
@@ -36,5 +37,15 @@ fun DefaultTextField(
             unfocusedIndicatorColor = Gray20,
         ),
         modifier = modifier.fillMaxWidth(),
+    )
+}
+
+@Preview
+@Composable
+fun ZoomTextFieldPreview() {
+    ZoomTextField(
+        value = "",
+        onValueChange = {},
+        placeholderText = "Meeting ID",
     )
 }

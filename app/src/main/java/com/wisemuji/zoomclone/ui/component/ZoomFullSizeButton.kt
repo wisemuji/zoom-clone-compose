@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 
 @Composable
-fun FullSizeButton(
+fun ZoomFullSizeButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -40,7 +40,7 @@ fun FullSizeButton(
 @Composable
 private fun FullSizeButtonPreview() {
     ZoomCloneComposeTheme {
-        FullSizeButton(text = "Start a Meeting", onClick = {})
+        ZoomFullSizeButton(text = "Start a Meeting", onClick = {})
     }
 }
 
@@ -48,6 +48,6 @@ private fun FullSizeButtonPreview() {
 @Composable
 private fun FullSizeButtonPreviewDisabled() {
     ZoomCloneComposeTheme {
-        FullSizeButton(text = "Start a Meeting", onClick = {}, enabled = false)
+        ZoomFullSizeButton(text = "Start a Meeting", onClick = {}, enabled = false)
     }
 }
