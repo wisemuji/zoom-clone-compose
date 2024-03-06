@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
+import com.wisemuji.zoomclone.model.MeetingOptions
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.DefaultTextField
@@ -46,6 +47,8 @@ import com.wisemuji.zoomclone.ui.theme.ZoomCloneComposeTheme
 fun JoinMeetingScreen(navController: NavHostController) {
     var meetingId by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
+    var audioOn by remember { mutableStateOf(true) }
+    var videoOn by remember { mutableStateOf(true) }
 
     StatusBarColor(color = White, isIconLight = true)
     Scaffold(
@@ -73,7 +76,9 @@ fun JoinMeetingScreen(navController: NavHostController) {
             FullSizeButton(
                 text = stringResource(R.string.join),
                 onClick = {
-                    navController.navigateToMeetingRoom(meetingId)
+                    navController.navigateToMeetingRoom(
+                        MeetingOptions(meetingId, name, audioOn, videoOn)
+                    )
                 },
                 modifier = Modifier.padding(top = 24.dp, start = 24.dp, end = 24.dp),
             )
@@ -82,9 +87,14 @@ fun JoinMeetingScreen(navController: NavHostController) {
                 fontSize = 12.sp,
                 color = Gray60,
                 lineHeight = 14.sp,
-                modifier = Modifier.padding(start =16.dp, end = 16.dp, top = 10.dp, bottom = 42.dp)
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 42.dp)
             )
-            JoinOptions()
+            JoinOptions(
+                doNotConnectAudio = !audioOn,
+                onCheckedDoNotConnectAudio = { audioOn = !it },
+                turnOffVideo = !videoOn,
+                onCheckedTurnOffVideo = { videoOn = !it }
+            )
         }
     }
 }

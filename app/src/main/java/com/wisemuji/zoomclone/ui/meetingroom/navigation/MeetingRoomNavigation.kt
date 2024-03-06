@@ -1,32 +1,21 @@
 package com.wisemuji.zoomclone.ui.meetingroom.navigation
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.wisemuji.zoomclone.model.MeetingOptions
 import com.wisemuji.zoomclone.ui.meetingroom.MeetingRoomScreen
-import com.wisemuji.zoomclone.ui.meetingroom.navigation.MeetingRoomRoute.ARGS_CALL_ID
+import com.wisemuji.zoomclone.ui.meetingroom.navigation.MeetingRoomRoute.ARGS_MEETING_OPTIONS
 import com.wisemuji.zoomclone.ui.meetingroom.navigation.MeetingRoomRoute.ROUTE
-import java.net.URLDecoder
-import java.net.URLEncoder
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
-private val URL_CHARACTER_ENCODING = Charsets.UTF_8.name()
-
-class MeetingRoomArgs(val callId: String) {
-    constructor(savedStateHandle: SavedStateHandle) :
-        this(
-            URLDecoder.decode(
-                checkNotNull(savedStateHandle[ARGS_CALL_ID]),
-                URL_CHARACTER_ENCODING
-            )
-        )
-}
-
-fun NavController.navigateToMeetingRoom(meetingId: String) {
-    val encodedId = URLEncoder.encode(meetingId, URL_CHARACTER_ENCODING)
-    navigate(ROUTE.replace("{$ARGS_CALL_ID}", encodedId)) {
+fun NavController.navigateToMeetingRoom(meetingOptions: MeetingOptions) {
+    val encoded = Json.encodeToString(meetingOptions)
+    popBackStack()
+    navigate(ROUTE.replace("{$ARGS_MEETING_OPTIONS}", encoded)) {
         launchSingleTop = true
     }
 }
@@ -37,7 +26,7 @@ fun NavGraphBuilder.meetingRoomScreen(
     composable(
         route = ROUTE,
         arguments = listOf(
-            navArgument(ARGS_CALL_ID) { type = NavType.StringType },
+            navArgument(ARGS_MEETING_OPTIONS) { type = NavType.StringType },
         ),
     ) {
         MeetingRoomScreen(onBackPressed)
@@ -45,6 +34,6 @@ fun NavGraphBuilder.meetingRoomScreen(
 }
 
 object MeetingRoomRoute {
-    const val ARGS_CALL_ID = "call_id"
-    const val ROUTE = "meeting_room/{${ARGS_CALL_ID}}"
+    const val ARGS_MEETING_OPTIONS = "meeting_options"
+    const val ROUTE = "meeting_room/{${ARGS_MEETING_OPTIONS}}"
 }

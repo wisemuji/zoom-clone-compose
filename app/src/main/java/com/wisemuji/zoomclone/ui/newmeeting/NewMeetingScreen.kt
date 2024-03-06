@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.wisemuji.zoomclone.R
+import com.wisemuji.zoomclone.model.MeetingOptions
 import com.wisemuji.zoomclone.ui.component.BasicSwitchRow
 import com.wisemuji.zoomclone.ui.component.DefaultHorizontalDivider
 import com.wisemuji.zoomclone.ui.component.FullSizeButton
@@ -69,7 +70,9 @@ fun NewMeetingScreen(navController: NavHostController) {
             DefaultHorizontalDivider()
             FullSizeButton(
                 text = stringResource(R.string.new_meeting_title),
-                onClick = { navController.navigateToMeetingRoom("defaultId") },
+                onClick = {
+                    navController.navigateToMeetingRoom(MeetingOptions(videoOn = videoOn))
+                },
                 modifier = Modifier.padding(24.dp),
             )
         }
