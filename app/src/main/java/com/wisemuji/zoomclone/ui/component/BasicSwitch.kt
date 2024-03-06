@@ -1,6 +1,7 @@
 package com.wisemuji.zoomclone.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -11,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wisemuji.zoomclone.ui.theme.Black
-import com.wisemuji.zoomclone.ui.theme.Gray20
 import com.wisemuji.zoomclone.ui.theme.Gray30
-import com.wisemuji.zoomclone.ui.theme.Gray50
 import com.wisemuji.zoomclone.ui.theme.Gray60
 import com.wisemuji.zoomclone.ui.theme.Green
 import com.wisemuji.zoomclone.ui.theme.White
@@ -52,6 +53,7 @@ fun BasicSwitchRow(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
+            .clickable { onCheckedChange(!checked) }
             .background(White)
             .padding(horizontal = 14.dp)
     ) {
@@ -77,14 +79,26 @@ fun BasicSwitchRow(
     }
 }
 
-@Preview
-@Composable
-private fun BasicSwitchPreview() {
-    BasicSwitch(checked = true, onCheckedChange = {})
+class CheckedPreviewParameterProvider : PreviewParameterProvider<Boolean> {
+    override val values = sequenceOf(true, false)
 }
 
 @Preview
 @Composable
-private fun BasicSwitchPreviewUnchecked() {
-    BasicSwitch(checked = false, onCheckedChange = {})
+private fun BasicSwitchPreview(
+    @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
+) {
+    BasicSwitch(checked = checked, onCheckedChange = {})
+}
+
+@Preview
+@Composable
+private fun BasicSwitchRowPreview(
+    @PreviewParameter(CheckedPreviewParameterProvider::class) checked: Boolean,
+) {
+    BasicSwitchRow(
+        title = "Video On",
+        checked = checked,
+        onCheckedChange = {},
+    )
 }
