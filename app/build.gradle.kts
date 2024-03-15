@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewModelCompose)
     implementation(libs.androidx.compose.navigation)
 
+    // accompanist
+    implementation(libs.accompanist.permissions)
+
     // kotlin
     implementation(libs.kotlinx.serialization.json)
 }

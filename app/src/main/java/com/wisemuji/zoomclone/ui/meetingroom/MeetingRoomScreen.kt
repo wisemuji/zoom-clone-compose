@@ -16,6 +16,8 @@
 
 package com.wisemuji.zoomclone.ui.meetingroom
 
+import android.Manifest
+import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,6 +47,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.wisemuji.zoomclone.R
 import com.wisemuji.zoomclone.ui.component.StatusBarColor
 import com.wisemuji.zoomclone.ui.component.ZoomVideoTheme
@@ -70,7 +74,7 @@ fun MeetingRoomScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     StatusBarColor(color = MaterialTheme.colorScheme.inverseSurface, isIconLight = false)
-    LaunchedEffect(key1 = Unit) {
+    EnsureVideoCallPermissions {
         viewModel.loadMeeting()
     }
     when (uiState) {
@@ -215,6 +219,34 @@ private fun MeetingRoomPlaceholder(
                 .padding(16.dp)
                 .fillMaxWidth(),
         )
+    }
+}
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+private fun EnsureVideoCallPermissions(onPermissionsGranted: () -> Unit) {
+    // While the SDK will handle the microphone permission,
+    // its not a bad idea to do it prior to entering any call UIs
+    val permissionsState = rememberMultiplePermissionsState(
+        permissions = buildList {
+            // Access to camera & microphone
+            add(Manifest.permission.CAMERA)
+            add(Manifest.permission.RECORD_AUDIO)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                // Allow for foreground service for notification on API 26+
+                add(Manifest.permission.FOREGROUND_SERVICE)
+            }
+        },
+    )
+
+    LaunchedEffect(key1 = Unit) {
+        permissionsState.launchMultiplePermissionRequest()
+    }
+
+    LaunchedEffect(key1 = permissionsState.allPermissionsGranted) {
+        if (permissionsState.allPermissionsGranted) {
+            onPermissionsGranted()
+        }
     }
 }
 
