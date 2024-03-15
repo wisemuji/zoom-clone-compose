@@ -10,6 +10,7 @@ androidxComposeMaterial3 = "1.2.0"
 androidxHiltNavigationCompose = "1.0.0"
 androidxActivity = "1.8.2"
 androidxTestExt = "1.1.5"
+accompanist = "0.34.0"
 googleSecretPlugin = "2.0.1"
 hilt = "2.50"
 
@@ -45,6 +46,8 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxComposeNavigation" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
+
+accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
