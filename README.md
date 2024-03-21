@@ -19,6 +19,7 @@ The goal of this repository is to showcase the following:
 
 If you're interested in building this project from the scratch, check out the blog posts below:
 
+- **[Build a Real-Time Zoom Clone with Jetpack Compose](https://getstream.io/blog/zoom-clone-compose/)**
 
 ## 📲 Download APK
 Go to the [Releases](https://github.com/wisemuji/zoom-clone-compose/releases) to download the latest APK.
