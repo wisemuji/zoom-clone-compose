@@ -4,6 +4,7 @@
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="https://android-arsenal.com/api?level=26"><img alt="API" src="https://img.shields.io/badge/API-26%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/wisemuji/zoom-clone-compose/actions/workflows/android.yml"><img alt="Build Status" src="https://github.com/wisemuji/zoom-clone-compose/actions/workflows/android.yml/badge.svg"/></a>
+  <a href="https://mailchi.mp/kotlinweekly/kotlin-weekly-399"><img alt="Kotlin Weekly" src="https://skydoves.github.io/badges/kotlin-weekly.svg"/></a>
 </p>
 
 This is a [Zoom](https://zoom.us/) clone app built with __[Stream Video SDK for Compose](https://getstream.io/video/sdk/android/?utm_source=Github&utm_medium=external_write[…]_campaign=Github_Mar2024_ZoomAndroidClone&utm_term=suhyeon)__ to implement real-time video meeting features using Jetpack Compose.
